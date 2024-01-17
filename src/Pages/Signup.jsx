@@ -1,7 +1,6 @@
 import useSignup from "../hooks/useSignup";
 import { useRef } from "react";
 import Loader from "../components/Loader";
-// import { useLogin } from "../hooks/useLogin";
 
 function Signup() {
   const { isPending, signup } = useSignup();

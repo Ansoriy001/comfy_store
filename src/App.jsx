@@ -62,7 +62,7 @@ function App() {
     },
     {
       path: "signup",
-      element: <>{user ? <Navigate to="/" /> : <Signup />}</>,
+      element: <Signup />,
     },
   ]);
 

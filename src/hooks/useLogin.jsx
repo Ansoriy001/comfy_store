@@ -3,8 +3,10 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebase/firebaseConfig";
 import { useGlobalContext } from "./useGlobalContext";
 import { toast } from "react-toastify";
-
+import { useNavigate } from "react-router-dom";
 function useLogin() {
+  const history = useNavigate();
+
   const [user, setUser] = useState(null);
   const [error, setError] = useState(null);
   const [isPending, setIsPending] = useState(false);
@@ -17,7 +19,9 @@ function useLogin() {
         const user = userCredential.user;
         dispatch({ type: "LOGIN", payload: user });
         toast.success("Прошло успешно");
+
         setIsPending(false);
+        history("/");
       })
       .catch((error) => {
         setError(error);
@@ -27,6 +31,13 @@ function useLogin() {
         setIsPending(false);
       });
   };
+
+  return { login, error, isPending };
+}
+
+export { useLogin };
+
+
   // const enterWithGoogle = () => {
   //   setIsPending(true);
   //   const provider = new GoogleAuthProvider();
@@ -50,8 +61,3 @@ function useLogin() {
 
   // GoogleAuthProvider,
   // signInWithPopup
-
-  return { login, error, isPending };
-}
-
-export { useLogin };

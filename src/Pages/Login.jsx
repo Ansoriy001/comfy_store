@@ -15,10 +15,7 @@ function Login() {
 
     form.current.reset();
   };
-  // const handleWithGoogle = (e) => {
-  //   e.preventDefault();
-  //   enterWithGoogle();
-  // };
+
 
   return (
     <>
